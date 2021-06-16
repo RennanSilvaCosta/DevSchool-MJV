@@ -6,8 +6,9 @@ public class PedidoItem {
 	private Double quantidade;
 	private Double valorVenda;
 	private Double valorTotal;
-	
-	public PedidoItem() {}
+
+	public PedidoItem() {
+	}
 
 	public PedidoItem(Integer id, Double quantidade, Double valorVenda, Double valorTotal) {
 		super();
@@ -47,6 +48,12 @@ public class PedidoItem {
 
 	public void setValorTotal(Double valorTotal) {
 		this.valorTotal = valorTotal;
+	}
+
+	@Override
+	public String toString() {
+		return " id: " + id + "\n quantidade: " + quantidade + "\n valorVenda: " + valorVenda + "\n valorTotal: "
+				+ valorTotal;
 	}
 
 }

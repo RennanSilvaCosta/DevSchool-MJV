@@ -1,10 +1,14 @@
 package app;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import model.CD;
 import model.Cadastro;
 import model.Livro;
 import model.Pedido;
+import model.PedidoItem;
 import model.Produto;
 
 public class Main {
@@ -13,9 +17,16 @@ public class Main {
 
 		Cadastro cadastroEditora = new Cadastro();
 		Cadastro cadastroCliente = new Cadastro();
+		Cadastro cadastroArtista = new Cadastro();
 		Produto produto = new Livro();
 		Pedido pedido = new Pedido();
 		Livro livro = new Livro();
+		CD cd = new CD();
+
+		PedidoItem item;
+		List<PedidoItem> itens = new ArrayList<>();
+
+		double valorTotal = 0;
 
 		cadastroEditora.setId(1);
 		cadastroEditora.setNome("Rotaplan editora e gráfica");
@@ -27,8 +38,13 @@ public class Main {
 		cadastroCliente.setEmail("rennansilvacosta@hotmail.com");
 		cadastroCliente.setTelefone(55887799L);
 
+		cadastroArtista.setId(1);
+		cadastroArtista.setNome("Till Lindeman");
+		cadastroArtista.setEmail("lindeman@alemanha.com");
+		cadastroArtista.setTelefone(4789563212L);
+
 		produto.setId(1);
-		
+
 		pedido.setData(new Date());
 		pedido.setId(1);
 		pedido.setValorTotal(59.99);
@@ -38,42 +54,47 @@ public class Main {
 		livro.setValorVenda(59.99);
 		livro.setCodigoBarras("001414000597950045");
 		livro.setPaginas(407);
-		
+
+		cd.setCadastroartista(cadastroArtista);
+		cd.setTitulo("Deutschland");
+		cd.setValorVenda(147.66);
+		cd.setCodigoBarras("447755221415896123");
+		cd.setFaixas(10);
+
 		produto.setTitulo(livro.getTitulo());
 		produto.setValorVenda(livro.getValorVenda());
 		produto.setCodigoBarras(livro.getCodigoBarras());
-				
-		/*System.out.println("=== Cliente ===");
-		System.out.println("ID: " + cadastroCliente.getId());
-		System.out.println("Nome: " + cadastroCliente.getNome());
-		System.out.println("Email: " + cadastroCliente.getEmail());
-		System.out.println("Telefone: " + cadastroCliente.getTelefone());
 
-		System.out.println("");
+		item = new PedidoItem();
+		item.setId(1);
+		item.setQuantidade(1.0);
+		item.setValorVenda(cd.getValorVenda());
+		item.setValorTotal(cd.getValorVenda() * item.getQuantidade());
 
-		System.out.println("=== Produto ===");
-		System.out.println("ID: " + produto.getId());
-		System.out.println("Titulo: " + produto.getTitulo());
-		System.out.println("Paginas: " + livro.getPaginas());
-		System.out.println("Valor de venda: " + produto.getValorVenda());
-		System.out.println("Codigo de barras: " + produto.getCodigoBarras());
-		System.out.println("Ediora: " + livro.getCadastroEditora());
+		itens.add(item);
 
-		System.out.println("");
+		item = new PedidoItem();
+		item.setId(2);
+		item.setQuantidade(2.0);
+		item.setValorVenda(livro.getValorVenda());
+		item.setValorTotal(livro.getValorVenda() * item.getQuantidade());
 
-		System.out.println("=== Pedido ===");
-		System.out.println("ID: " + pedido.getId());
-		System.out.println("Valor total: " + pedido.getValorTotal());
-		System.out.println("Data: " + pedido.getData());*/
-		
-		System.out.println("=== Pedido ===");
+		itens.add(item);
+
+		System.out.println("========== Pedido ==========");
 		System.out.println("Nª pedido: " + pedido.getId());
 		System.out.println("Data: " + pedido.getData());
 		System.out.println("Nome: " + cadastroCliente.getNome());
 		System.out.println("Email: " + cadastroCliente.getEmail());
 		System.out.println("Telefone: " + cadastroCliente.getTelefone());
-		System.out.println("Produto: " + produto.getTitulo() + " " + livro.getCadastroEditora().getNome());
-		System.out.println("Total: " + produto.getValorVenda());
-		
+
+		System.out.println("Itens: ");
+		for (PedidoItem pedidoItem : itens) {
+			System.out.println(pedidoItem);
+			valorTotal += pedidoItem.getValorTotal();
+		}
+
+		pedido.setValorTotal(valorTotal);
+
 	}
 }
