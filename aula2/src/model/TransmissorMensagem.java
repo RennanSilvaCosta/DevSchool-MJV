@@ -3,11 +3,19 @@ package model;
 import java.util.Date;
 
 public abstract class TransmissorMensagem {
-	
+
 	private Date data;
 
-	protected void enviar(String mensagem) {
-		
+	public Date getData() {
+		return data;
 	}
-	
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	protected void enviar(String mensagem) {
+
+	}
+
 }

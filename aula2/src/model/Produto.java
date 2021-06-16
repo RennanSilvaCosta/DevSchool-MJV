@@ -7,6 +7,17 @@ public abstract class Produto {
 	private String titulo;
 	private Double valorVenda;
 
+	public Produto() {
+	}
+
+	public Produto(Integer id, String codigoBarras, String titulo, Double valorVenda) {
+		super();
+		this.id = id;
+		this.codigoBarras = codigoBarras;
+		this.titulo = titulo;
+		this.valorVenda = valorVenda;
+	}
+
 	public Integer getId() {
 		return id;
 	}

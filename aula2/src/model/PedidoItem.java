@@ -6,6 +6,16 @@ public class PedidoItem {
 	private Double quantidade;
 	private Double valorVenda;
 	private Double valorTotal;
+	
+	public PedidoItem() {}
+
+	public PedidoItem(Integer id, Double quantidade, Double valorVenda, Double valorTotal) {
+		super();
+		this.id = id;
+		this.quantidade = quantidade;
+		this.valorVenda = valorVenda;
+		this.valorTotal = valorTotal;
+	}
 
 	public Integer getId() {
 		return id;

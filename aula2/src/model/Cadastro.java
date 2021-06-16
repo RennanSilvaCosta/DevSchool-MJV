@@ -7,6 +7,18 @@ public class Cadastro {
 	private Long telefone;
 	private String email;
 
+	public Cadastro() {
+
+	}
+
+	public Cadastro(Integer id, String nome, Long telefone, String email) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.telefone = telefone;
+		this.email = email;
+	}
+
 	public Integer getId() {
 		return id;
 	}

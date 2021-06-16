@@ -5,6 +5,16 @@ public class CD extends Produto {
 	Cadastro Cadastroartista;
 	private Integer faixas;
 
+	public CD() {
+
+	}
+
+	public CD(Cadastro cadastroartista, Integer faixas) {
+		super();
+		Cadastroartista = cadastroartista;
+		this.faixas = faixas;
+	}
+
 	public Cadastro getCadastroartista() {
 		return Cadastroartista;
 	}
