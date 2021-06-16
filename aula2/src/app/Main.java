@@ -81,20 +81,28 @@ public class Main {
 
 		itens.add(item);
 
-		System.out.println("========== Pedido ==========");
+		System.out.println("==================== Pedido ====================");
+		System.out.println("");
 		System.out.println("Nª pedido: " + pedido.getId());
 		System.out.println("Data: " + pedido.getData());
 		System.out.println("Nome: " + cadastroCliente.getNome());
 		System.out.println("Email: " + cadastroCliente.getEmail());
 		System.out.println("Telefone: " + cadastroCliente.getTelefone());
 
+		System.out.println("");
 		System.out.println("Itens: ");
+		System.out.println("");
 		for (PedidoItem pedidoItem : itens) {
 			System.out.println(pedidoItem);
+			System.out.println("");
 			valorTotal += pedidoItem.getValorTotal();
 		}
 
 		pedido.setValorTotal(valorTotal);
+
+		System.out.println("----------------------------------------");
+		System.out.println("Valor total do pedido: " + pedido.getValorTotal());
+		System.out.println("----------------------------------------");
 
 	}
 }
