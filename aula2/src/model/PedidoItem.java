@@ -52,7 +52,7 @@ public class PedidoItem {
 
 	@Override
 	public String toString() {
-		return " id: " + id + "\n quantidade: " + quantidade + "\n valorVenda: " + valorVenda + "\n valorTotal: "
+		return " id: " + id + "\n Quantidade: " + quantidade + "\n Preço: " + valorVenda + "\n Total: "
 				+ valorTotal;
 	}
 

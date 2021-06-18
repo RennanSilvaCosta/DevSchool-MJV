@@ -13,6 +13,7 @@ public class Pedido {
     private Cadastro comprador;
     private Integer ccf;
     private Integer coo;
+    private Empresa empresa;
 
     public Cadastro getComprador() {
         return comprador;
@@ -20,6 +21,14 @@ public class Pedido {
 
     public void setComprador(Cadastro comprador) {
         this.comprador = comprador;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
     public Integer getCcf() {

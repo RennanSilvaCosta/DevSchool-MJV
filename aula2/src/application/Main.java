@@ -1,6 +1,7 @@
 package application;
 
 import model.*;
+import pedidoService.PedidoService;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,6 +22,14 @@ public class Main {
         List<PedidoItem> itens = new ArrayList<>();
 
         double valorTotal = 0;
+
+        Empresa empresa = new Empresa(9080981l, 9089084l);
+        Cadastro cadastroEmpresa = new Cadastro();
+        cadastroEmpresa.setCpfCnpj("12345678900001");
+        cadastroEmpresa.setEmail("pedidos@pedidos.com");
+        cadastroEmpresa.setEndereco("Avenida dos tolos, 1036, Centro - SP");
+        cadastroEmpresa.setNome("IFOOD PEDIDOS");
+        empresa.setCadastro(cadastroEmpresa);
 
         cadastroEditora.setId(1);
         cadastroEditora.setNome("Rotaplan editora e gráfica");
@@ -75,7 +84,11 @@ public class Main {
 
         itens.add(item);
 
-        System.out.println("==================== Pedido ====================");
+        pedido.setEmpresa(empresa);
+        PedidoService.imprimitPedido(pedido);
+
+        System.out.println("");
+        System.out.println("=================== Pedido =====================");
         System.out.println("");
         System.out.println("Nª pedido: " + pedido.getId());
         System.out.println("Data: " + pedido.getData());

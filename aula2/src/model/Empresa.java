@@ -3,23 +3,20 @@ package model;
 public class Empresa {
 
     private Cadastro cadastro;
-    private String inscricaoEstadual;
-    private String inscricaoMunicipal;
+    private long inscricaoEstadual;
+    private long inscricaoMunicipal;
 
-    public String getInscricaoEstadual() {
+    public Empresa(long inscricaoEstadual, long inscricaoMunicipal) {
+        this.inscricaoEstadual = inscricaoEstadual;
+        this.inscricaoMunicipal = inscricaoMunicipal;
+    }
+
+    public long getInscricaoEstadual() {
         return inscricaoEstadual;
     }
 
-    public void setInscricaoEstadual(String inscricaoEstadual) {
-        this.inscricaoEstadual = inscricaoEstadual;
-    }
-
-    public String getInscricaoMunicipal() {
+    public long getInscricaoMunicipal() {
         return inscricaoMunicipal;
-    }
-
-    public void setInscricaoMunicipal(String inscricaoMunicipal) {
-        this.inscricaoMunicipal = inscricaoMunicipal;
     }
 
     public Cadastro getCadastro() {

@@ -7,9 +7,18 @@ public class Cadastro {
     private Long telefone;
     private String email;
     private String cpfCnpj;
+    private String endereco;
 
     public Cadastro() {
 
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
     public String getCpfCnpj() {
