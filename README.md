@@ -1,6 +1,6 @@
-## Curso Java MJV tecnologia & inovação
+## :books: Curso Java MJV tecnologia & inovação :books:
 
-### Conteúdo do curso:
+### :clipboard: Conteúdo do curso:
 
 #### 1ª dia
 
