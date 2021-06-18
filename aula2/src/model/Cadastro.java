@@ -6,17 +6,18 @@ public class Cadastro {
     private String nome;
     private Long telefone;
     private String email;
+    private String cpfCnpj;
 
     public Cadastro() {
 
     }
 
-    public Cadastro(Integer id, String nome, Long telefone, String email) {
-        super();
-        this.id = id;
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
+    public String getCpfCnpj() {
+        return cpfCnpj;
+    }
+
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
     }
 
     public Integer getId() {

@@ -6,53 +6,68 @@ import java.util.List;
 
 public class Pedido {
 
-	private Integer id;
-	private Date data;
-	private Double valorTotal;
-	private List<PedidoItem> itens = new ArrayList<>();
+    private Integer id;
+    private Date data;
+    private Double valorTotal;
+    private List<PedidoItem> itens = new ArrayList<>();
+    private Cadastro comprador;
+    private Integer ccf;
+    private Integer coo;
 
-	public Pedido() {
+    public Cadastro getComprador() {
+        return comprador;
+    }
 
-	}
+    public void setComprador(Cadastro comprador) {
+        this.comprador = comprador;
+    }
 
-	public Pedido(Integer id, Date data, Double valorTotal, List<PedidoItem> itens) {
-		super();
-		this.id = id;
-		this.data = data;
-		this.valorTotal = valorTotal;
-		this.itens = itens;
-	}
+    public Integer getCcf() {
+        return ccf;
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public void setCcf(Integer ccf) {
+        this.ccf = ccf;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Integer getCoo() {
+        return coo;
+    }
 
-	public Date getData() {
-		return data;
-	}
+    public void setCoo(Integer coo) {
+        this.coo = coo;
+    }
 
-	public void setData(Date data) {
-		this.data = data;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public Double getValorTotal() {
-		return valorTotal;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setValorTotal(Double valorTotal) {
-		this.valorTotal = valorTotal;
-	}
+    public Date getData() {
+        return data;
+    }
 
-	public List<PedidoItem> getItens() {
-		return itens;
-	}
+    public void setData(Date data) {
+        this.data = data;
+    }
 
-	public void setItens(List<PedidoItem> itens) {
-		this.itens = itens;
-	}
+    public Double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public List<PedidoItem> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<PedidoItem> itens) {
+        this.itens = itens;
+    }
 
 }
