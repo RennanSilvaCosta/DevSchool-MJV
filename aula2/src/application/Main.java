@@ -27,7 +27,9 @@ public class Main {
         Cadastro cadastroEmpresa = new Cadastro();
         cadastroEmpresa.setCpfCnpj("12345678900001");
         cadastroEmpresa.setEmail("pedidos@pedidos.com");
-        cadastroEmpresa.setEndereco("Avenida dos tolos, 1036, Centro - SP");
+
+        //TODO: enserir endereo
+        //cadastroEmpresa.setEndereco("Avenida dos tolos, 1036, Centro - SP");
         cadastroEmpresa.setNome("IFOOD PEDIDOS");
         empresa.setCadastro(cadastroEmpresa);
 
