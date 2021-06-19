@@ -25,8 +25,21 @@ public class Main {
 
         Empresa empresa = new Empresa(9080981l, 9089084l);
         Cadastro cadastroEmpresa = new Cadastro();
+        Endereco enderecoEmpresa = new Endereco();
         cadastroEmpresa.setCpfCnpj("12345678900001");
         cadastroEmpresa.setEmail("pedidos@pedidos.com");
+
+        //Setando endereço no cadastro da empresa
+        enderecoEmpresa.setCep("05526-060");
+        enderecoEmpresa.setLogradouro("Rua Inocêncio da Silva");
+        enderecoEmpresa.setBairro("Jardim Jussara");
+        enderecoEmpresa.setNumero(1478);
+        enderecoEmpresa.setComplemento("A");
+        enderecoEmpresa.setReferencia("Do lado da ótica 'visão boa'");
+        enderecoEmpresa.setCidade("São Paulo");
+        enderecoEmpresa.setUf("SP");
+
+        cadastroEmpresa.setEndereco(enderecoEmpresa);
 
         //TODO: enserir endereo
         //cadastroEmpresa.setEndereco("Avenida dos tolos, 1036, Centro - SP");
@@ -42,6 +55,18 @@ public class Main {
         cadastroCliente.setNome("Rennan Silva Costa");
         cadastroCliente.setEmail("rennansilvacosta@hotmail.com");
         cadastroCliente.setTelefone(55887799L);
+
+        Endereco enderecoCliente = new Endereco();
+        enderecoCliente.setCep("04620-009");
+        enderecoCliente.setLogradouro("Praça Pastor Stremme");
+        enderecoCliente.setBairro("Campo Belo");
+        enderecoCliente.setNumero(1557);
+        enderecoCliente.setComplemento("Ap 33 Bloco 4");
+        enderecoCliente.setReferencia("Do lado da soverteria");
+        enderecoCliente.setCidade("São Paulo");
+        enderecoCliente.setUf("SP");
+
+        cadastroCliente.setEndereco(enderecoCliente);
 
         cadastroArtista.setId(1);
         cadastroArtista.setNome("Till Lindeman");
