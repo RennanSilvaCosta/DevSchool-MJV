@@ -38,7 +38,11 @@ public class PedidoService {
         sb.append(String.format("Data: %s \n", FormatFactory.formataData(pedido.getData())));
         sb.append(String.format("Nome: %s \n", cadastroCliente.getNome()));
         sb.append(String.format("Email: %s \n", cadastroCliente.getEmail()));
-        sb.append(String.format("Telefone: %s \n", cadastroCliente.getTelefone()));
+        sb.append(String.format("Telefone: %s \n", FormatFactory.formataTelefone(cadastroCliente.getTelefone())));
+        sb.append(String.format("CEP: %s \n", cadastroCliente.getEndereco().getCep()));
+        sb.append(String.format("Endereço: %s, %s - %s \n", cadastroCliente.getEndereco().getLogradouro(), cadastroCliente.getEndereco().getNumero(), cadastroCliente.getEndereco().getComplemento()));
+        sb.append(String.format("Bairro: %s, %s - %s \n", cadastroCliente.getEndereco().getBairro(), cadastroCliente.getEndereco().getCidade(), cadastroCliente.getEndereco().getUf()));
+        sb.append(String.format("Referencia: %s \n", cadastroCliente.getEndereco().getReferencia()));
         sb.append("============================================");
         System.out.println(sb);
     }

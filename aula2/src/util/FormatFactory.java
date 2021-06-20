@@ -10,7 +10,6 @@ public class FormatFactory {
         StringBuilder stringBuilder = new StringBuilder();
 
         if (cpfCnpj.length() == Constantes.TAMANHO_CNPJ) {
-
             stringBuilder.append(cpfCnpj, 0, 2).append(".");
             stringBuilder.append(cpfCnpj, 2, 5).append(".");
             stringBuilder.append(cpfCnpj, 5, 8).append("/");
@@ -33,5 +32,29 @@ public class FormatFactory {
     public static String formataData(LocalDateTime data) {
         DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
         return formatter.format(data);
+    }
+
+    public static String formataTelefone(Long telefone) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("(");
+
+        String telString = String.valueOf(telefone);
+
+        if (telString.length() == Constantes.TAMANHO_TELEFONE_FIXO) {
+            stringBuilder.append(telString, 0, 2).append(") ");
+            stringBuilder.append(telString, 2, 6).append("-");
+            stringBuilder.append(telString, 6, 10);
+
+            return stringBuilder.toString();
+
+        } else if (telString.length() == Constantes.TAMANHO_CELULAR){
+            stringBuilder.append(telString, 0, 2).append(") ");
+            stringBuilder.append(telString, 2, 3).append(" ");
+            stringBuilder.append(telString, 3, 7).append("-");
+            stringBuilder.append(telString, 7, 11);
+
+            return stringBuilder.toString();
+        }
+        return telString;
     }
 }

@@ -50,7 +50,7 @@ public class Main {
         cadastroCliente.setId(1);
         cadastroCliente.setNome("Rennan Silva Costa");
         cadastroCliente.setEmail("rennansilvacosta@hotmail.com");
-        cadastroCliente.setTelefone(55887799L);
+        cadastroCliente.setTelefone(11958331269l);
 
         Endereco enderecoCliente = new Endereco();
         enderecoCliente.setCep("04620-009");
