@@ -2,58 +2,59 @@ package model;
 
 public class PedidoItem {
 
-	private Integer id;
-	private Double quantidade;
-	private Double valorVenda;
-	private Double valorTotal;
+    private Integer id;
+    private String tituloProduto;
+    private Double quantidade;
+    private Double valorVenda;
+    private Double valorTotal;
 
-	public PedidoItem() {
-	}
+    public PedidoItem() {
+    }
 
-	public PedidoItem(Integer id, Double quantidade, Double valorVenda, Double valorTotal) {
-		super();
-		this.id = id;
-		this.quantidade = quantidade;
-		this.valorVenda = valorVenda;
-		this.valorTotal = valorTotal;
-	}
+    public String getTituloProduto() {
+        return tituloProduto;
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public void setTituloProduto(String tituloProduto) {
+        this.tituloProduto = tituloProduto;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public Double getQuantidade() {
-		return quantidade;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setQuantidade(Double quantidade) {
-		this.quantidade = quantidade;
-	}
+    public Double getQuantidade() {
+        return quantidade;
+    }
 
-	public Double getValorVenda() {
-		return valorVenda;
-	}
+    public void setQuantidade(Double quantidade) {
+        this.quantidade = quantidade;
+    }
 
-	public void setValorVenda(Double valorVenda) {
-		this.valorVenda = valorVenda;
-	}
+    public Double getValorVenda() {
+        return valorVenda;
+    }
 
-	public Double getValorTotal() {
-		return valorTotal;
-	}
+    public void setValorVenda(Double valorVenda) {
+        this.valorVenda = valorVenda;
+    }
 
-	public void setValorTotal(Double valorTotal) {
-		this.valorTotal = valorTotal;
-	}
+    public Double getValorTotal() {
+        return valorTotal;
+    }
 
-	@Override
-	public String toString() {
-		return " id: " + id + "\n Quantidade: " + quantidade + "\n Preço: " + valorVenda + "\n Total: "
-				+ valorTotal;
-	}
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    @Override
+    public String toString() {
+        return " id: " + id + "\n Quantidade: " + quantidade + "\n Preço: " + valorVenda + "\n Total: "
+                + valorTotal;
+    }
 
 }

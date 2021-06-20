@@ -1,13 +1,13 @@
 package model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Pedido {
 
     private Integer id;
-    private Date data;
+    private LocalDateTime data;
     private Double valorTotal;
     private List<PedidoItem> itens = new ArrayList<>();
     private Cadastro comprador;
@@ -55,11 +55,11 @@ public class Pedido {
         this.id = id;
     }
 
-    public Date getData() {
+    public LocalDateTime getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDateTime data) {
         this.data = data;
     }
 

@@ -3,8 +3,8 @@ package application;
 import model.*;
 import pedidoService.PedidoService;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Main {
@@ -14,14 +14,13 @@ public class Main {
         Cadastro cadastroCliente = new Cadastro();
         Cadastro cadastroArtista = new Cadastro();
         Produto produto = new Livro();
+        Produto produto2 = new CD();
         Pedido pedido = new Pedido();
         Livro livro = new Livro();
         CD cd = new CD();
 
         PedidoItem item;
         List<PedidoItem> itens = new ArrayList<>();
-
-        double valorTotal = 0;
 
         Empresa empresa = new Empresa(9080981l, 9089084l);
         Cadastro cadastroEmpresa = new Cadastro();
@@ -40,7 +39,6 @@ public class Main {
         enderecoEmpresa.setUf("SP");
 
         cadastroEmpresa.setEndereco(enderecoEmpresa);
-        
         cadastroEmpresa.setNome("IFOOD PEDIDOS");
         empresa.setCadastro(cadastroEmpresa);
 
@@ -71,9 +69,7 @@ public class Main {
         cadastroArtista.setEmail("lindeman@alemanha.com");
         cadastroArtista.setTelefone(4789563212L);
 
-        produto.setId(1);
-
-        pedido.setData(new Date());
+        pedido.setData(LocalDateTime.now());
         pedido.setId(1);
         pedido.setValorTotal(59.99);
 
@@ -84,17 +80,24 @@ public class Main {
         livro.setPaginas(407);
 
         cd.setCadastroartista(cadastroArtista);
-        cd.setTitulo("Deutschland");
+        cd.setTitulo("CD - Rammstein Deutschland");
         cd.setValorVenda(147.66);
         cd.setCodigoBarras("447755221415896123");
         cd.setFaixas(10);
 
+        produto.setId(1);
         produto.setTitulo(livro.getTitulo());
         produto.setValorVenda(livro.getValorVenda());
         produto.setCodigoBarras(livro.getCodigoBarras());
 
+        produto2.setId(2);
+        produto2.setTitulo(cd.getTitulo());
+        produto2.setValorVenda(cd.getValorVenda());
+        produto2.setCodigoBarras(cd.getCodigoBarras());
+
         item = new PedidoItem();
         item.setId(1);
+        item.setTituloProduto(produto2.getTitulo());
         item.setQuantidade(1.0);
         item.setValorVenda(cd.getValorVenda());
         item.setValorTotal(cd.getValorVenda() * item.getQuantidade());
@@ -103,37 +106,17 @@ public class Main {
 
         item = new PedidoItem();
         item.setId(2);
+        item.setTituloProduto(produto.getTitulo());
         item.setQuantidade(2.0);
         item.setValorVenda(livro.getValorVenda());
         item.setValorTotal(livro.getValorVenda() * item.getQuantidade());
 
         itens.add(item);
 
+        pedido.setItens(itens);
         pedido.setEmpresa(empresa);
-        PedidoService.imprimirDetalhesEmpresaPedido(pedido);
+        pedido.setComprador(cadastroCliente);
 
-        System.out.println("");
-        System.out.println("=================== Pedido =====================");
-        System.out.println("");
-        System.out.println("Nª pedido: " + pedido.getId());
-        System.out.println("Data: " + pedido.getData());
-        System.out.println("Nome: " + cadastroCliente.getNome());
-        System.out.println("Email: " + cadastroCliente.getEmail());
-        System.out.println("Telefone: " + cadastroCliente.getTelefone());
-
-        System.out.println("");
-        System.out.println("Itens: ");
-        System.out.println("");
-        for (PedidoItem pedidoItem : itens) {
-            System.out.println(pedidoItem);
-            System.out.println("");
-            valorTotal += pedidoItem.getValorTotal();
-        }
-
-        pedido.setValorTotal(valorTotal);
-
-        System.out.println("----------------------------------------");
-        System.out.println("Valor total do pedido: " + pedido.getValorTotal());
-        System.out.println("----------------------------------------");
+        PedidoService.imprimirPedido(pedido);
     }
 }

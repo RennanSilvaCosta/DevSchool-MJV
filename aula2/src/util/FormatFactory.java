@@ -1,5 +1,9 @@
 package util;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+
 public class FormatFactory {
 
     public static String formataCpfCnpj(String cpfCnpj) {
@@ -26,4 +30,8 @@ public class FormatFactory {
         return cpfCnpj;
     }
 
+    public static String formataData(LocalDateTime data) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
+        return formatter.format(data);
+    }
 }
