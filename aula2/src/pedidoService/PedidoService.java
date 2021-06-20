@@ -26,7 +26,7 @@ public class PedidoService {
         sb.append(String.format("Bairro: %s, %s - %s \n", empresa.getCadastro().getEndereco().getBairro(), empresa.getCadastro().getEndereco().getCidade(), empresa.getCadastro().getEndereco().getUf()));
         sb.append(String.format("Referencia: %s \n", empresa.getCadastro().getEndereco().getReferencia()));
         sb.append(String.format("CNPJ: %s \n", FormatFactory.formataCpfCnpj(empresa.getCadastro().getCpfCnpj())));
-        sb.append(String.format("IE: %d\nIM: %d", empresa.getInscricaoEstadual(), empresa.getInscricaoMunicipal()));
+        sb.append(String.format("IE: %s\nIM: %s", FormatFactory.formataIE(empresa.getInscricaoEstadual()), FormatFactory.formataIM(empresa.getInscricaoMunicipal())));
         System.out.println(sb);
     }
 

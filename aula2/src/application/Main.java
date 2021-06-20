@@ -22,7 +22,7 @@ public class Main {
         PedidoItem item;
         List<PedidoItem> itens = new ArrayList<>();
 
-        Empresa empresa = new Empresa(9080981l, 9089084l);
+        Empresa empresa = new Empresa(908098157l, 908908413l);
         Cadastro cadastroEmpresa = new Cadastro();
         Endereco enderecoEmpresa = new Endereco();
         cadastroEmpresa.setCpfCnpj("12345678900001");

@@ -47,7 +47,7 @@ public class FormatFactory {
 
             return stringBuilder.toString();
 
-        } else if (telString.length() == Constantes.TAMANHO_CELULAR){
+        } else if (telString.length() == Constantes.TAMANHO_CELULAR) {
             stringBuilder.append(telString, 0, 2).append(") ");
             stringBuilder.append(telString, 2, 3).append(" ");
             stringBuilder.append(telString, 3, 7).append("-");
@@ -56,5 +56,27 @@ public class FormatFactory {
             return stringBuilder.toString();
         }
         return telString;
+    }
+
+    public static String formataIE(long ie) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        String ieString = String.valueOf(ie);
+        stringBuilder.append(ieString, 0, 3).append(".");
+        stringBuilder.append(ieString, 3, 6).append(".");
+        stringBuilder.append(ieString, 6, 9);
+
+        return stringBuilder.toString();
+    }
+
+    public static String formataIM(long im) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        String imString = String.valueOf(im);
+        stringBuilder.append(imString, 0, 3).append(".");
+        stringBuilder.append(imString, 3, 6).append(".");
+        stringBuilder.append(imString, 6, 9);
+
+        return stringBuilder.toString();
     }
 }
