@@ -40,9 +40,7 @@ public class Main {
         enderecoEmpresa.setUf("SP");
 
         cadastroEmpresa.setEndereco(enderecoEmpresa);
-
-        //TODO: enserir endereo
-        //cadastroEmpresa.setEndereco("Avenida dos tolos, 1036, Centro - SP");
+        
         cadastroEmpresa.setNome("IFOOD PEDIDOS");
         empresa.setCadastro(cadastroEmpresa);
 
@@ -112,7 +110,7 @@ public class Main {
         itens.add(item);
 
         pedido.setEmpresa(empresa);
-        PedidoService.imprimitPedido(pedido);
+        PedidoService.imprimirDetalhesEmpresaPedido(pedido);
 
         System.out.println("");
         System.out.println("=================== Pedido =====================");
