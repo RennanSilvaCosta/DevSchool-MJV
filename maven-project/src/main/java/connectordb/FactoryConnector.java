@@ -13,7 +13,6 @@ public class FactoryConnector {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url, user, password);
-            System.out.println("Conectado com sucesso");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
