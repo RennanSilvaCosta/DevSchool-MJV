@@ -1,0 +1,36 @@
+============================================================
+IFOOD PEDIDOS
+CEP: 05526-060 
+Endereço: Rua Inocêncio da Silva, 1478 - A 
+Bairro: Jardim Jussara, São Paulo - SP 
+Referencia: Do lado da ótica 'visão boa' 
+CNPJ: 12.345.678/9000-01 
+IE: 908.098.157
+IM: 908.908.413
+============================================================
+Nª pedido: 1 
+Data: 22/06/2021 16:53 
+Nome: Rennan Silva Costa 
+Email: rennansilvacosta@hotmail.com 
+Telefone: (11) 9 5833-1269 
+CEP: 04620-009 
+Endereço: Praça Pastor Stremme, 1557 - Ap 33 Bloco 4 
+Bairro: Campo Belo, São Paulo - SP 
+Referencia: Do lado da soverteria 
+============================================================
+Itens: 
+
+ID: 1 
+Produto: CD - Rammstein Deutschland 
+Quantidade: 1,00 
+Preço: 147,66 
+Sub Total: 147,66 
+
+ID: 2 
+Produto: Livro - código limpo 
+Quantidade: 2,00 
+Preço: 59,99 
+Sub Total: 119,98 
+============================================================
+Valor total do pedido: 267,64 
+============================================================

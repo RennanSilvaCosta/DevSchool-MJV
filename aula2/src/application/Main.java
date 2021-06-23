@@ -3,6 +3,10 @@ package application;
 import model.*;
 import pedidoService.PedidoService;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -117,6 +121,23 @@ public class Main {
         pedido.setEmpresa(empresa);
         pedido.setComprador(cadastroCliente);
 
-        PedidoService.imprimirPedido(pedido);
+        String cupomString = PedidoService.createCupom(pedido);
+        File arquivo = new File("C:\\Users\\renna\\Desktop\\ws-devschool\\dev-school-curso-java\\aula2\\cupom");
+        if (!arquivo.exists()) {
+            arquivo.mkdirs();
+        }
+
+        try {
+            File cupom = new File(arquivo, "cupom.txt");
+            cupom.createNewFile();
+            FileWriter arquivoTxt = new FileWriter(cupom.getPath());
+            PrintWriter gravarArquivo = new PrintWriter(arquivoTxt);
+
+            gravarArquivo.print(cupomString);
+            arquivoTxt.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
