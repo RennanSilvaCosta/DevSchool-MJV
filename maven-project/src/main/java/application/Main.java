@@ -17,6 +17,11 @@ public class Main {
         user.setDataNascimento(LocalDate.now());
         user.setTelefone("1144557899");
 
-        us.saveUsuario(user);
+        //us.saveUsuario(user);
+
+        user.setEmail("rennansilvacosta@gmail.com");
+        user.setId(7);
+
+        us.updateUsuario(user);
     }
 }

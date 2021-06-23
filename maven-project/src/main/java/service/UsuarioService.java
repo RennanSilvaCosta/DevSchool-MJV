@@ -20,4 +20,14 @@ public class UsuarioService {
             System.out.println(throwables.getMessage());
         }
     }
+
+    public void updateUsuario(Usuario user) {
+        try {
+            dao.updateUsuario(user);
+            System.out.println("Atualizaou");
+        } catch (SQLException throwables) {
+            System.out.println(throwables.getMessage());
+        }
+    }
+
 }
