@@ -42,7 +42,7 @@ public class UsuarioDAO {
     }
 
     public List<Usuario> getAll() throws SQLException {
-        String sql = "SELECT id, nome_usuario, email, cpf, data_nascimento, telefone FROM tb_usuario;";
+        String sql = "SELECT * FROM tb_usuario;";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         ResultSet rs = pstmt.executeQuery();
 
@@ -63,7 +63,7 @@ public class UsuarioDAO {
     }
 
     public int deleteUsuario(Integer id) throws SQLException {
-        String sql = "DELETE FROM tb_usuario WHERE id=?";
+        String sql = "DELETE FROM tb_usuario WHERE id_usuario=?";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         pstmt.setInt(1, id);
         return pstmt.executeUpdate();
