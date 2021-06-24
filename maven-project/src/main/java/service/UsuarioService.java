@@ -4,6 +4,7 @@ import dao.UsuarioDAO;
 import model.Usuario;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class UsuarioService {
 
@@ -28,6 +29,15 @@ public class UsuarioService {
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
         }
+    }
+
+    public List<Usuario> getAll() {
+        try {
+            return dao.getAll();
+        } catch (SQLException throwables) {
+            System.out.println(throwables.getMessage());
+        }
+        return null;
     }
 
 }

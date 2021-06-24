@@ -4,6 +4,7 @@ import model.Usuario;
 import service.UsuarioService;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Main {
 
@@ -17,11 +18,12 @@ public class Main {
         user.setDataNascimento(LocalDate.now());
         user.setTelefone("1144557899");
 
-        //us.saveUsuario(user);
+        us.saveUsuario(user);
 
-        user.setEmail("rennansilvacosta@gmail.com");
-        user.setId(7);
+        List<Usuario> users = us.getAll();
 
-        us.updateUsuario(user);
+        for (Usuario usuario: users) {
+            System.out.println(usuario.getId() + " " + usuario.getNomeUsuario());
+        }
     }
 }

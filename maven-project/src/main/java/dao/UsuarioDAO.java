@@ -3,10 +3,10 @@ package dao;
 import connectordb.FactoryConnector;
 import model.Usuario;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsuarioDAO {
 
@@ -39,6 +39,27 @@ public class UsuarioDAO {
         pstmt.setInt(6, user.getId());
 
         return pstmt.executeUpdate();
+    }
+
+    public List<Usuario> getAll() throws SQLException {
+        String sql = "SELECT id, nome_usuario, email, cpf, data_nascimento, telefone FROM tb_usuario;";
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+        ResultSet rs = pstmt.executeQuery();
+
+        List<Usuario> users = new ArrayList<>();
+
+        while (rs.next()) {
+            Usuario user = new Usuario();
+            user.setId(rs.getInt(1));
+            user.setNomeUsuario(rs.getString(2));
+            user.setEmail(rs.getString(3));
+            user.setCpf(rs.getString(4));
+            user.setDataNascimento(LocalDate.parse(String.valueOf(rs.getDate(5))));
+            user.setTelefone(rs.getString(6));
+            users.add(user);
+        }
+        rs.close();
+        return users;
     }
 
 }
