@@ -40,4 +40,14 @@ public class UsuarioService {
         return null;
     }
 
+    public void deleteUsuario(Integer id) {
+        try {
+            if (dao.deleteUsuario(id) == 1) {
+                System.out.println("Usuario deletado com sucesso!");
+            }
+        } catch (SQLException throwables) {
+            System.out.println(throwables.getMessage());
+        }
+    }
+
 }

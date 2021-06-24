@@ -25,5 +25,9 @@ public class Main {
         for (Usuario usuario: users) {
             System.out.println(usuario.getId() + " " + usuario.getNomeUsuario());
         }
+
+        int indice = users.size();
+        user = users.get(indice-1);
+        us.deleteUsuario(user.getId());
     }
 }
