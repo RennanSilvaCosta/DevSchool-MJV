@@ -54,8 +54,8 @@ public class UsuarioDAO {
             user.setNomeUsuario(rs.getString(2));
             user.setEmail(rs.getString(3));
             user.setCpf(rs.getString(4));
-            user.setDataNascimento(LocalDate.parse(String.valueOf(rs.getDate(5))));
-            user.setTelefone(rs.getString(6));
+            user.setTelefone(rs.getString(5));
+            user.setDataNascimento(LocalDate.parse(String.valueOf(rs.getDate(6))));
             users.add(user);
         }
         rs.close();

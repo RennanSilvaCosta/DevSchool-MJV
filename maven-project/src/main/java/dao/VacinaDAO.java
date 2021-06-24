@@ -18,27 +18,26 @@ public class VacinaDAO {
     }
 
     public int saveVacina(Vacina vac) throws SQLException {
-        String sql = "INSERT INTO tb_vacina (nome_vacina, nome_usuario, data_aplicacao) VALUES (?,?,?);";
+        String sql = "INSERT INTO tb_vacina (nome_vacina, data_aplicacao, id_usuario) VALUES (?,?,?);";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         pstmt.setString(1, vac.getNomeVacina());
-        pstmt.setString(2, vac.getUsuario().getNomeUsuario());
-        pstmt.setDate(3, Date.valueOf(vac.getDataAplicacao()));
+        pstmt.setDate(2, Date.valueOf(vac.getDataAplicacao()));
+        pstmt.setInt(3, vac.getUsuario().getId());
 
         return pstmt.executeUpdate();
     }
 
     public int updateVacina(Vacina vac) throws SQLException {
-        String sql = "UPDATE tb_vacina SET nome_vacina=?, nome_usuario=?, data_aplicacao=? WHERE id=?;";
+        String sql = "UPDATE tb_vacina SET nome_vacina=?, data_aplicacao=? WHERE id=?;";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         pstmt.setString(1, vac.getNomeVacina());
-        pstmt.setString(2, vac.getUsuario().getNomeUsuario());
-        pstmt.setDate(3, Date.valueOf(vac.getDataAplicacao()));
-        pstmt.setInt(6, vac.getId());
+        pstmt.setDate(2, Date.valueOf(vac.getDataAplicacao()));
+        pstmt.setInt(3, vac.getId());
 
         return pstmt.executeUpdate();
     }
 
-    public List<Vacina> getAll() throws SQLException {
+    /*public List<Vacina> getAll() throws SQLException {
         String sql = "SELECT * FROM tb_vacina;";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         ResultSet rs = pstmt.executeQuery();
@@ -57,7 +56,7 @@ public class VacinaDAO {
         }
         rs.close();
         return vacs;
-    }
+    }*/
 
     public int deleteVacina(Integer id) throws SQLException {
         String sql = "DELETE FROM tb_vacina WHERE id_vacina=?";
