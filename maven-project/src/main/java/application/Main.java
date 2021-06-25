@@ -12,26 +12,7 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-
-
         menu();
-        int alt = sc.nextInt();
-
-        switch (alt) {
-            case 1:
-                subMenuPessoa();
-                break;
-            case 2:
-
-                break;
-            case 3:
-
-                break;
-            default:
-
-                break;
-
-        }
     }
 
     public static void cadastrarUsuario() {
@@ -174,6 +155,28 @@ public class Main {
         subMenuPessoa();
     }
 
+    public static void buscarUsuarioCpf() {
+        Usuario user;
+        UsuarioService us = new UsuarioService();
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\n%s Procurar pessoa %s\n", "-".repeat(20), "-".repeat(20)));
+        sb.append("Informe o CPF da pessoa: ");
+        System.out.print(sb.toString());
+
+        String cpf = sc.next();
+        user = us.getByCpf(cpf);
+        sb = new StringBuilder();
+
+        if (user.getId() != null) {
+            sb.append("Cadastro encontrado");
+            sb.append(String.format("\nNome: %s\nEmail: %s\nTelefone: %s\nNasc: %s", user.getNomeUsuario(), user.getEmail(), user.getTelefone(), user.getDataNascimento()));
+            System.out.println(sb.toString());
+        } else {
+            System.out.println("Cadastro não encontrado!");
+        }
+        subMenuPessoa();
+    }
+
     public static void menu() {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("\n%s Aplicação de Vacina %s\n", "-".repeat(20), "-".repeat(20)));
@@ -181,6 +184,22 @@ public class Main {
         sb.append("\n 2 - Gerenciar vacinas");
         sb.append("\n 3 - Sair do programa");
         System.out.println(sb.toString());
+
+        int alt = sc.nextInt();
+        switch (alt) {
+            case 1:
+                subMenuPessoa();
+                break;
+            case 2:
+                break;
+            case 3:
+                System.exit(0);
+                break;
+            default:
+                System.exit(0);
+                break;
+        }
+
     }
 
     public static void subMenuPessoa() {
@@ -190,8 +209,8 @@ public class Main {
         sb.append(String.format("\n%s Gerencimaneto de pessoas %s\n", "-".repeat(20), "-".repeat(20)));
         sb.append("\n 1 - Cadastrar nova pessoa");
         sb.append("\n 2 - Alterar pessoa existente pelo CPF");
-        sb.append("\n 3 - Lista todas as pessoas");
-        sb.append("\n 4 - Exlcuir pessoa pelo CPF");
+        sb.append("\n 3 - Exlcuir pessoa pelo CPF");
+        sb.append("\n 4 - Lista todas as pessoas");
         sb.append("\n 5 - Procurar pessoa pelo CPF");
         sb.append("\n 6 - Voltar ao menu principal");
         System.out.println(sb.toString());
@@ -206,12 +225,13 @@ public class Main {
                 atualizarUsuario();
                 break;
             case 3:
-                listarUsuario();
-                break;
-            case 4:
                 deletarUsuario();
                 break;
+            case 4:
+                listarUsuario();
+                break;
             case 5:
+                buscarUsuarioCpf();
                 break;
             case 6:
                 menu();
