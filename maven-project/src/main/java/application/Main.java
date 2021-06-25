@@ -1,7 +1,9 @@
 package application;
 
 import model.Usuario;
+import model.Vacina;
 import service.UsuarioService;
+import service.VacinaService;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -9,16 +11,24 @@ import java.util.Scanner;
 
 public class Main {
 
+    //auxiliares
     static Scanner sc = new Scanner(System.in);
+    static StringBuilder sb = new StringBuilder();
+
+    //servicos
+    static UsuarioService us = new UsuarioService();
+    static VacinaService vs = new VacinaService();
+
+    //models
+    static Usuario user = new Usuario();
+    static Vacina vac = new Vacina();
 
     public static void main(String[] args) {
         menu();
     }
 
     public static void cadastrarUsuario() {
-        Usuario user = new Usuario();
-        UsuarioService us = new UsuarioService();
-        StringBuilder sb = new StringBuilder();
+        resetStringBuilder();
         sb.append(String.format("\n%s Cadastro de pessoa %s\n", "-".repeat(20), "-".repeat(20)));
         sb.append("Informe o nome: ");
 
@@ -53,9 +63,7 @@ public class Main {
     }
 
     public static void deletarUsuario() {
-        Usuario user;
-        UsuarioService us = new UsuarioService();
-        StringBuilder sb = new StringBuilder();
+        resetStringBuilder();
         sb.append(String.format("\n%s Deleção de pessoa %s\n", "-".repeat(20), "-".repeat(20)));
         sb.append("Informe o CPF da pessoa: ");
         System.out.print(sb.toString());
@@ -83,9 +91,7 @@ public class Main {
     }
 
     public static void atualizarUsuario() {
-        Usuario user;
-        UsuarioService us = new UsuarioService();
-        StringBuilder sb = new StringBuilder();
+        resetStringBuilder();
         sb.append(String.format("\n%s Atualização de pessoa %s\n", "-".repeat(20), "-".repeat(20)));
         sb.append("Informe o CPF da pessoa: ");
         System.out.print(sb.toString());
@@ -142,8 +148,7 @@ public class Main {
     }
 
     public static void listarUsuario() {
-        StringBuilder sb = new StringBuilder();
-        UsuarioService us = new UsuarioService();
+        resetStringBuilder();
         List<Usuario> users = us.getAll();
 
         if (users != null) {
@@ -156,9 +161,7 @@ public class Main {
     }
 
     public static void buscarUsuarioCpf() {
-        Usuario user;
-        UsuarioService us = new UsuarioService();
-        StringBuilder sb = new StringBuilder();
+        resetStringBuilder();
         sb.append(String.format("\n%s Procurar pessoa %s\n", "-".repeat(20), "-".repeat(20)));
         sb.append("Informe o CPF da pessoa: ");
         System.out.print(sb.toString());
@@ -178,7 +181,7 @@ public class Main {
     }
 
     public static void menu() {
-        StringBuilder sb = new StringBuilder();
+        resetStringBuilder();
         sb.append(String.format("\n%s Aplicação de Vacina %s\n", "-".repeat(20), "-".repeat(20)));
         sb.append("\n 1 - Gerenciar pessoas");
         sb.append("\n 2 - Gerenciar vacinas");
@@ -199,13 +202,10 @@ public class Main {
                 System.exit(0);
                 break;
         }
-
     }
 
     public static void subMenuPessoa() {
-        StringBuilder sb = new StringBuilder();
-        Scanner sc = new Scanner(System.in);
-
+        resetStringBuilder();
         sb.append(String.format("\n%s Gerencimaneto de pessoas %s\n", "-".repeat(20), "-".repeat(20)));
         sb.append("\n 1 - Cadastrar nova pessoa");
         sb.append("\n 2 - Alterar pessoa existente pelo CPF");
@@ -239,5 +239,9 @@ public class Main {
             default:
                 System.out.println("Opção inválida");
         }
+    }
+
+    private static void resetStringBuilder() {
+        sb = new StringBuilder();
     }
 }
