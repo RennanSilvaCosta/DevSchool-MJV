@@ -12,7 +12,6 @@ public class UsuarioService {
     UsuarioDAO dao = new UsuarioDAO();
     ValidateBO bo = new ValidateBO();
 
-
     public void saveUsuario(Usuario user) {
         try {
             if (bo.validateCpf(user.getCpf())) {
@@ -69,5 +68,4 @@ public class UsuarioService {
         }
         return null;
     }
-
 }

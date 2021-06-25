@@ -37,8 +37,8 @@ public class VacinaDAO {
         return pstmt.executeUpdate();
     }
 
-    /*public List<Vacina> getAll() throws SQLException {
-        String sql = "SELECT * FROM tb_vacina;";
+    public List<Vacina> getAllAplicacoes() throws SQLException {
+        String sql = "SELECT * FROM tb_vacina inner join tb_usuario on (tb_vacina.id_usuario = tb_usuario.id);";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         ResultSet rs = pstmt.executeQuery();
 
@@ -47,16 +47,24 @@ public class VacinaDAO {
         while (rs.next()) {
             Usuario user = new Usuario();
             Vacina vac = new Vacina();
-            vac.setUsuario(user);
+
             vac.setId(rs.getInt(1));
             vac.setNomeVacina(rs.getString(2));
-            vac.getUsuario().setNomeUsuario(rs.getString(3));
-            vac.setDataAplicacao(LocalDate.parse(String.valueOf(rs.getDate(4))));
+            vac.setDataAplicacao(LocalDate.parse(String.valueOf(rs.getDate(3))));
+
+            user.setId(rs.getInt(5));
+            user.setNomeUsuario(rs.getString(6));
+            user.setEmail(rs.getString(7));
+            user.setCpf(rs.getString(8));
+            user.setTelefone(rs.getString(9));
+            user.setDataNascimento(LocalDate.parse(String.valueOf(rs.getDate(10))));
+
+            vac.setUsuario(user);
             vacs.add(vac);
         }
         rs.close();
         return vacs;
-    }*/
+    }
 
     public int deleteVacina(Integer id) throws SQLException {
         String sql = "DELETE FROM tb_vacina WHERE id_vacina=?";
@@ -64,5 +72,4 @@ public class VacinaDAO {
         pstmt.setInt(1, id);
         return pstmt.executeUpdate();
     }
-
 }

@@ -3,7 +3,15 @@ package service;
 import dao.VacinaDAO;
 import model.Vacina;
 
+import javax.naming.spi.DirObjectFactory;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Scanner;
 
 public class VacinaService {
 
@@ -30,14 +38,44 @@ public class VacinaService {
         }
     }
 
-   /* public List<Vacina> getAll() {
+    public void getAllAplicacoes() {
+        Scanner sc = new Scanner(System.in);
         try {
-            return dao.getAll();
+            List<Vacina> vacs = dao.getAllAplicacoes();
+            if (vacs.size() > 0) {
+                String relatorio = geraRelatorio(vacs);
+                System.out.println(relatorio);
+                System.out.println("Deseja salvar este relatorio: (S)im ou (N)ão");
+
+                char resposta = sc.next().toLowerCase().charAt(0);
+
+                if (resposta == 's') {
+                    salvaRelatorio(relatorio);
+                }
+            } else {
+                System.out.println("Impossivel gerar relátorio, pois não foi aplicada nenhuma vacina!");
+            }
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
         }
-        return null;
-    }*/
+    }
+
+    private void salvaRelatorio(String relatorio) {
+        File arquivo = new File("C:\\Users\\renna\\Desktop\\mjv\\DevSchool-MJV\\maven-project\\relatorios");
+        if (!arquivo.exists()) {
+            arquivo.mkdirs();
+        }
+        try {
+            File cupom = new File(arquivo, "relatorio " + LocalDate.now() +".txt");
+            cupom.createNewFile();
+            FileWriter arquivoTxt = new FileWriter(cupom.getPath());
+            PrintWriter gravarArquivo = new PrintWriter(arquivoTxt);
+            gravarArquivo.print(relatorio);
+            arquivoTxt.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void deleteVacina(Integer id) {
         try {
@@ -47,6 +85,18 @@ public class VacinaService {
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
         }
+    }
+
+    private String geraRelatorio(List<Vacina> vacs) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%s Relatorio de aplicação da vacina %s\n", "=".repeat(30), "=".repeat(30)));
+
+        for (Vacina vac : vacs) {
+            sb.append(String.format("| Nome: %s\n| CPF: %s\n| Nasc: %s\n| CPF: %s\n| Telefone: %s\n| Vacina: %s\n| Data aplicação: %s\n|", vac.getUsuario().getNomeUsuario(), vac.getUsuario().getCpf(), vac.getUsuario().getDataNascimento(), vac.getUsuario().getCpf(),
+                    vac.getUsuario().getTelefone(), vac.getNomeVacina(), vac.getDataAplicacao()));
+            sb.append(String.format("%s", "=".repeat(93)));
+        }
+        return sb.toString();
     }
 
 }

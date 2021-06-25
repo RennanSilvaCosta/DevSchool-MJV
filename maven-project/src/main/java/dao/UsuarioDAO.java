@@ -108,5 +108,4 @@ public class UsuarioDAO {
         rs.close();
         return user;
     }
-
 }

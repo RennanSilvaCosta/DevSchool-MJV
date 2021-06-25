@@ -102,7 +102,7 @@ public class Main {
         sb = new StringBuilder();
 
         if (user != null) {
-            char resposta = 'n';
+            char resposta;
             System.out.println("Cadastro encontrado\n");
             do {
                 sb.append(String.format("\nNome: %s\nEmail: %s\nTelefone: %s\n", user.getNomeUsuario(), user.getEmail(), user.getTelefone()));
@@ -196,13 +196,14 @@ public class Main {
             case 2:
                 subMenuVacina();
                 break;
-            case 3:
-                System.exit(0);
-                break;
             default:
                 System.exit(0);
                 break;
         }
+    }
+
+    private static void gerarRelatorio() {
+        vs.getAllAplicacoes();
     }
 
     private static void aplicarVacina() {
@@ -275,7 +276,7 @@ public class Main {
         resetStringBuilder();
         sb.append(String.format("\n%s Gerencimaneto de vacina %s\n", "-".repeat(20), "-".repeat(20)));
         sb.append("\n 1 - Aplicar vacina");
-        sb.append("\n 2 - Gerar relatorio de aplicação");
+        sb.append("\n 2 - Gerar relatorio de aplicações");
         sb.append("\n 3 - Voltar ao menu principal");
         System.out.println(sb.toString());
 
@@ -286,7 +287,7 @@ public class Main {
                 aplicarVacina();
                 break;
             case 2:
-
+                gerarRelatorio();
                 break;
             case 3:
                 menu();

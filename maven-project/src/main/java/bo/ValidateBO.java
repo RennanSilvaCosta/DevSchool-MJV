@@ -14,10 +14,8 @@ public class ValidateBO {
         return user.getId() == null;
     }
 
-
     public boolean valdiateEmail(String email) throws SQLException {
         Usuario user = dao.getByEmail(email);
         return user.getId() == null;
     }
-
 }
