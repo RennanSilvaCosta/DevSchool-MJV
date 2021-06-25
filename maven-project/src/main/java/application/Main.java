@@ -27,7 +27,7 @@ public class Main {
         menu();
     }
 
-    public static void cadastrarUsuario() {
+    private static void cadastrarUsuario() {
         resetStringBuilder();
         sb.append(String.format("\n%s Cadastro de pessoa %s\n", "-".repeat(20), "-".repeat(20)));
         sb.append("Informe o nome: ");
@@ -62,7 +62,7 @@ public class Main {
         subMenuPessoa();
     }
 
-    public static void deletarUsuario() {
+    private static void deletarUsuario() {
         resetStringBuilder();
         sb.append(String.format("\n%s Deleção de pessoa %s\n", "-".repeat(20), "-".repeat(20)));
         sb.append("Informe o CPF da pessoa: ");
@@ -90,7 +90,7 @@ public class Main {
         subMenuPessoa();
     }
 
-    public static void atualizarUsuario() {
+    private static void atualizarUsuario() {
         resetStringBuilder();
         sb.append(String.format("\n%s Atualização de pessoa %s\n", "-".repeat(20), "-".repeat(20)));
         sb.append("Informe o CPF da pessoa: ");
@@ -147,7 +147,7 @@ public class Main {
         subMenuPessoa();
     }
 
-    public static void listarUsuario() {
+    private static void listarUsuario() {
         resetStringBuilder();
         List<Usuario> users = us.getAll();
 
@@ -160,7 +160,7 @@ public class Main {
         subMenuPessoa();
     }
 
-    public static void buscarUsuarioCpf() {
+    private static void buscarUsuarioCpf() {
         resetStringBuilder();
         sb.append(String.format("\n%s Procurar pessoa %s\n", "-".repeat(20), "-".repeat(20)));
         sb.append("Informe o CPF da pessoa: ");
@@ -180,7 +180,7 @@ public class Main {
         subMenuPessoa();
     }
 
-    public static void menu() {
+    private static void menu() {
         resetStringBuilder();
         sb.append(String.format("\n%s Aplicação de Vacina %s\n", "-".repeat(20), "-".repeat(20)));
         sb.append("\n 1 - Gerenciar pessoas");
@@ -194,6 +194,7 @@ public class Main {
                 subMenuPessoa();
                 break;
             case 2:
+                subMenuVacina();
                 break;
             case 3:
                 System.exit(0);
@@ -204,7 +205,7 @@ public class Main {
         }
     }
 
-    public static void subMenuPessoa() {
+    private static void subMenuPessoa() {
         resetStringBuilder();
         sb.append(String.format("\n%s Gerencimaneto de pessoas %s\n", "-".repeat(20), "-".repeat(20)));
         sb.append("\n 1 - Cadastrar nova pessoa");
@@ -235,6 +236,31 @@ public class Main {
                 break;
             case 6:
                 menu();
+                break;
+            default:
+                System.out.println("Opção inválida");
+        }
+    }
+
+    private static void subMenuVacina() {
+        resetStringBuilder();
+        sb.append(String.format("\n%s Gerencimaneto de vacina %s\n", "-".repeat(20), "-".repeat(20)));
+        sb.append("\n 1 - Aplicar vacina");
+        sb.append("\n 2 - Gerar relatorio de aplicação");
+        sb.append("\n 3 - Voltar ao menu principal");
+        System.out.println(sb.toString());
+
+        int alt = sc.nextInt();
+
+        switch (alt) {
+            case 1:
+                
+                break;
+            case 2:
+
+                break;
+            case 3:
+
                 break;
             default:
                 System.out.println("Opção inválida");
