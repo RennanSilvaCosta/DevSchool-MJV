@@ -50,4 +50,13 @@ public class UsuarioService {
         }
     }
 
+    public Usuario getByCpf(String cpf) {
+        try {
+            return dao.getByCpf(cpf);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
 }

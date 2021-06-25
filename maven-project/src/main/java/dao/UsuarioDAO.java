@@ -69,4 +69,24 @@ public class UsuarioDAO {
         return pstmt.executeUpdate();
     }
 
+    public Usuario getByCpf(String cpf) throws SQLException {
+        String sql = "SELECT * FROM tb_usuario WHERE cpf=?;";
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+        pstmt.setString(1, cpf);
+        ResultSet rs = pstmt.executeQuery();
+
+        Usuario user = new Usuario();
+
+        if (rs.next()) {
+            user.setId(rs.getInt(1));
+            user.setNomeUsuario(rs.getString(2));
+            user.setEmail(rs.getString(3));
+            user.setCpf(rs.getString(4));
+            user.setTelefone(rs.getString(5));
+            user.setDataNascimento(LocalDate.parse(String.valueOf(rs.getDate(6))));
+        }
+        rs.close();
+        return user;
+    }
+
 }

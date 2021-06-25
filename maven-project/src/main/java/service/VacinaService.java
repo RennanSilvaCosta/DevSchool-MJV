@@ -31,14 +31,14 @@ public class VacinaService {
         }
     }
 
-    public List<Vacina> getAll() {
+   /* public List<Vacina> getAll() {
         try {
             return dao.getAll();
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
         }
         return null;
-    }
+    }*/
 
     public void deleteVacina(Integer id) {
         try {
