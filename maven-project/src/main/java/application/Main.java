@@ -205,6 +205,35 @@ public class Main {
         }
     }
 
+    private static void aplicarVacina() {
+        resetStringBuilder();
+        sb.append(String.format("\n%s Aplicação de vacina %s\n", "-".repeat(20), "-".repeat(20)));
+        sb.append("Informe o CPF da pessoa: ");
+        System.out.print(sb.toString());
+        String cpf = sc.next();
+
+        user = us.getByCpf(cpf);
+
+        if (user.getId() != null) {
+            resetStringBuilder();
+            sb.append("\nCadastro encontrado!\n");
+            sb.append(String.format("\nNome: %s\nEmail: %s\nTelefone: %s\nNasc: %s\n", user.getNomeUsuario(), user.getEmail(), user.getTelefone(), user.getDataNascimento()));
+            sb.append("Qual vacina será aplicada nessa pessoa: ");
+            System.out.print(sb);
+            String vacina = sc.next();
+
+            vac.setNomeVacina(vacina);
+            vac.setUsuario(user);
+            vac.setDataAplicacao(LocalDate.now());
+
+            vs.saveVacina(vac);
+
+        } else {
+            System.out.println("Cadastro não encontrado!");
+        }
+        subMenuVacina();
+    }
+
     private static void subMenuPessoa() {
         resetStringBuilder();
         sb.append(String.format("\n%s Gerencimaneto de pessoas %s\n", "-".repeat(20), "-".repeat(20)));
@@ -254,13 +283,13 @@ public class Main {
 
         switch (alt) {
             case 1:
-                
+                aplicarVacina();
                 break;
             case 2:
 
                 break;
             case 3:
-
+                menu();
                 break;
             default:
                 System.out.println("Opção inválida");

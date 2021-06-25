@@ -4,7 +4,6 @@ import dao.VacinaDAO;
 import model.Vacina;
 
 import java.sql.SQLException;
-import java.util.List;
 
 public class VacinaService {
 
@@ -13,7 +12,7 @@ public class VacinaService {
     public void saveVacina(Vacina vac) {
         try {
             if (dao.saveVacina(vac) == 1) {
-                String resposta = String.format("Vacina inserida com sucesso:\nVacina: %s\nAplicado em: %s\nData de aplicação: %s",
+                String resposta = String.format("\nVacina aplicada com sucesso:\nNome: %s\nAplicado em: %s\nData de aplicação: %s",
                         vac.getNomeVacina(), vac.getUsuario().getNomeUsuario(), vac.getDataAplicacao());
                 System.out.println(resposta);
             }
