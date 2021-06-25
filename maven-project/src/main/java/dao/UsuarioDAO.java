@@ -63,7 +63,7 @@ public class UsuarioDAO {
     }
 
     public int deleteUsuario(Integer id) throws SQLException {
-        String sql = "DELETE FROM tb_usuario WHERE id_usuario=?";
+        String sql = "DELETE FROM tb_usuario WHERE id=?";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         pstmt.setInt(1, id);
         return pstmt.executeUpdate();

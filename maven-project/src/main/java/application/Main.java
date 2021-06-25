@@ -9,8 +9,10 @@ import java.util.Scanner;
 
 public class Main {
 
+    static Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+
 
         menu();
         int alt = sc.nextInt();
@@ -32,7 +34,7 @@ public class Main {
         }
     }
 
-    public static void cadastrarUsuario(Scanner sc) {
+    public static void cadastrarUsuario() {
         Usuario user = new Usuario();
         UsuarioService us = new UsuarioService();
         StringBuilder sb = new StringBuilder();
@@ -69,7 +71,37 @@ public class Main {
         subMenuPessoa();
     }
 
-    public static void atualizarUsuario(Scanner sc) {
+    public static void deletarUsuario() {
+        Usuario user;
+        UsuarioService us = new UsuarioService();
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\n%s Deleção de pessoa %s\n", "-".repeat(20), "-".repeat(20)));
+        sb.append("Informe o CPF da pessoa: ");
+        System.out.print(sb.toString());
+
+        String cpf = sc.next();
+        user = us.getByCpf(cpf);
+
+        if (user.getId() != null) {
+            sb.append("Cadastro encontrado");
+            sb.append(String.format("\nNome: %s\nEmail: %s\nTelefone: %s\n", user.getNomeUsuario(), user.getEmail(), user.getTelefone()));
+            sb.append("\nDeseja realmente deletar este cadastro?\n");
+            sb.append("(S)im ou (N)ão");
+            System.out.println(sb.toString());
+
+            char resposta = sc.next().charAt(0);
+
+            if (resposta == 's') {
+                us.deleteUsuario(user.getId());
+            }
+
+        } else {
+            System.out.println("Cadastro não encontrado!");
+        }
+        subMenuPessoa();
+    }
+
+    public static void atualizarUsuario() {
         Usuario user;
         UsuarioService us = new UsuarioService();
         StringBuilder sb = new StringBuilder();
@@ -168,15 +200,16 @@ public class Main {
 
         switch (alt) {
             case 1:
-                cadastrarUsuario(sc);
+                cadastrarUsuario();
                 break;
             case 2:
-                atualizarUsuario(sc);
+                atualizarUsuario();
                 break;
             case 3:
                 listarUsuario();
                 break;
             case 4:
+                deletarUsuario();
                 break;
             case 5:
                 break;
