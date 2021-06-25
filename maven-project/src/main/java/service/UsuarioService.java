@@ -1,5 +1,6 @@
 package service;
 
+import bo.ValidateBO;
 import dao.UsuarioDAO;
 import model.Usuario;
 
@@ -9,13 +10,23 @@ import java.util.List;
 public class UsuarioService {
 
     UsuarioDAO dao = new UsuarioDAO();
+    ValidateBO bo = new ValidateBO();
+
 
     public void saveUsuario(Usuario user) {
         try {
-            if (dao.saveUsuario(user) == 1) {
-                String resposta = String.format("Usuario inserido com sucesso:\nNome: %s\nCPF: %s\nEmail: %s\nData de nascimento: %s\nTel: %s",
-                        user.getNomeUsuario(), user.getCpf(), user.getEmail(), user.getDataNascimento(), user.getTelefone());
-                System.out.println(resposta);
+            if (bo.validateCpf(user.getCpf())) {
+                if (bo.valdiateEmail(user.getEmail())) {
+                    if (dao.saveUsuario(user) == 1) {
+                        String resposta = String.format("Usuario inserido com sucesso:\nNome: %s\nCPF: %s\nEmail: %s\nData de nascimento: %s\nTel: %s",
+                                user.getNomeUsuario(), user.getCpf(), user.getEmail(), user.getDataNascimento(), user.getTelefone());
+                        System.out.println(resposta);
+                    }
+                } else {
+                    System.out.println(("Email já cadastrado, por favor informe outro email!"));
+                }
+            } else {
+                System.out.println(("Usuario já cadastrado, por favor informe outro CPF!"));
             }
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
