@@ -27,7 +27,9 @@ Fiz uma relação entre a *tb_vacina* e *tb_usuario*, onde a *tb_vacina* tem um 
 
 Comando de criação do banco:
 
-``` CREATE DATABASE vacinacao_db ```
+```bash 
+CREATE DATABASE vacinacao_db
+```
 
 Comando de criação da tabela *usuario*:
 ``` 
@@ -103,3 +105,8 @@ Escolhendo a opção 2 do menu principal somos direcionados para o sub menu de g
 Nesse menu é possível fazer as seguintes operações:
 * Registrar a aplicação de uma vacina
 * Gerar relatorio das aplicações de vacina, também é possivel salvar o relatorio
+
+Por enquanto para poder salvar o relatorio será necessário alterar o path do arquivo em *service/VacinaService*
+```
+final String path = "CAMINHO DE ONDE O PROJETO FOI BAIXADO ATÉ A PASTA RELATORIOS \relatorios";
+```
