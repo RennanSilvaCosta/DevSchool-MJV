@@ -3,6 +3,7 @@ package service;
 import bo.ValidateBO;
 import dao.UsuarioDAO;
 import model.Usuario;
+import util.FactoryFormat;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -18,7 +19,8 @@ public class UsuarioService {
                 if (bo.valdiateEmail(user.getEmail())) {
                     if (dao.saveUsuario(user) == 1) {
                         String resposta = String.format("Usuario inserido com sucesso:\nNome: %s\nCPF: %s\nEmail: %s\nData de nascimento: %s\nTel: %s",
-                                user.getNomeUsuario(), user.getCpf(), user.getEmail(), user.getDataNascimento(), user.getTelefone());
+                                user.getNomeUsuario(), FactoryFormat.formataCpf(user.getCpf()), user.getEmail(), 
+                                FactoryFormat.formataData(user.getDataNascimento()), FactoryFormat.formataTelefone(user.getTelefone()));
                         System.out.println(resposta);
                     }
                 } else {

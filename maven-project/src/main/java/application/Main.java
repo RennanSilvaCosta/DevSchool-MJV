@@ -4,6 +4,7 @@ import model.Usuario;
 import model.Vacina;
 import service.UsuarioService;
 import service.VacinaService;
+import util.FactoryFormat;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -73,7 +74,8 @@ public class Main {
 
         if (user.getId() != null) {
             sb.append("Cadastro encontrado");
-            sb.append(String.format("\nNome: %s\nEmail: %s\nTelefone: %s\n", user.getNomeUsuario(), user.getEmail(), user.getTelefone()));
+            sb.append(String.format("\nNome: %s\nEmail: %s\nTelefone: %s\n", user.getNomeUsuario(),
+                    user.getEmail(), FactoryFormat.formataTelefone(user.getTelefone())));
             sb.append("\nDeseja realmente deletar este cadastro?\n");
             sb.append("(S)im ou (N)ão");
             System.out.println(sb.toString());
@@ -105,7 +107,8 @@ public class Main {
             char resposta;
             System.out.println("Cadastro encontrado\n");
             do {
-                sb.append(String.format("\nNome: %s\nEmail: %s\nTelefone: %s\n", user.getNomeUsuario(), user.getEmail(), user.getTelefone()));
+                sb.append(String.format("\nNome: %s\nEmail: %s\nTelefone: %s\n", user.getNomeUsuario(),
+                        user.getEmail(), FactoryFormat.formataTelefone(user.getTelefone())));
                 sb.append("\nQuais dados deseja atualizar?\n");
                 sb.append("1 - Nome\n2 - Email\n3 - Telefone");
                 System.out.println(sb.toString());
@@ -153,7 +156,9 @@ public class Main {
 
         if (users != null) {
             for (Usuario user : users) {
-                sb.append(String.format("\nNome: %s, CPF: %s, Email: %s, Telefone: %s, Nasc: %s\n", user.getNomeUsuario(), user.getCpf(), user.getEmail(), user.getTelefone(), user.getDataNascimento()));
+                sb.append(String.format("\nNome: %s, CPF: %s, Email: %s, Telefone: %s, Nasc: %s\n",
+                        user.getNomeUsuario(), FactoryFormat.formataCpf(user.getCpf()), user.getEmail(),
+                        FactoryFormat.formataTelefone(user.getTelefone()), FactoryFormat.formataData(user.getDataNascimento())));
             }
             System.out.println(sb.toString());
         }
@@ -172,7 +177,8 @@ public class Main {
 
         if (user.getId() != null) {
             sb.append("Cadastro encontrado");
-            sb.append(String.format("\nNome: %s\nEmail: %s\nTelefone: %s\nNasc: %s", user.getNomeUsuario(), user.getEmail(), user.getTelefone(), user.getDataNascimento()));
+            sb.append(String.format("\nNome: %s\nEmail: %s\nTelefone: %s\nNasc: %s", user.getNomeUsuario(),
+                    user.getEmail(), FactoryFormat.formataTelefone(user.getTelefone()), FactoryFormat.formataData(user.getDataNascimento())));
             System.out.println(sb.toString());
         } else {
             System.out.println("Cadastro não encontrado!");
@@ -218,7 +224,8 @@ public class Main {
         if (user.getId() != null) {
             resetStringBuilder();
             sb.append("\nCadastro encontrado!\n");
-            sb.append(String.format("\nNome: %s\nEmail: %s\nTelefone: %s\nNasc: %s\n", user.getNomeUsuario(), user.getEmail(), user.getTelefone(), user.getDataNascimento()));
+            sb.append(String.format("\nNome: %s\nEmail: %s\nTelefone: %s\nNasc: %s\n", user.getNomeUsuario(), user.getEmail(),
+                    FactoryFormat.formataTelefone(user.getTelefone()), FactoryFormat.formataData(user.getDataNascimento())));
             sb.append("Qual vacina será aplicada nessa pessoa: ");
             System.out.print(sb);
             String vacina = sc.next();

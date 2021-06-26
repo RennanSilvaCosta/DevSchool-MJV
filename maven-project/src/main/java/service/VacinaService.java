@@ -2,6 +2,7 @@ package service;
 
 import dao.VacinaDAO;
 import model.Vacina;
+import util.FactoryFormat;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -9,7 +10,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,7 +23,7 @@ public class VacinaService {
         try {
             if (dao.saveVacina(vac) == 1) {
                 String resposta = String.format("\nVacina aplicada com sucesso:\nNome: %s\nAplicado em: %s\nData de aplicação: %s",
-                        vac.getNomeVacina(), vac.getUsuario().getNomeUsuario(), vac.getDataAplicacao());
+                        vac.getNomeVacina(), vac.getUsuario().getNomeUsuario(), FactoryFormat.formataData(vac.getDataAplicacao()));
                 System.out.println(resposta);
             }
         } catch (SQLException throwables) {
@@ -68,8 +68,7 @@ public class VacinaService {
             arquivo.mkdirs();
         }
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH.mm.ss");
-            String dataFormatada = formatter.format(LocalDateTime.now());
+            String dataFormatada = FactoryFormat.formataData(LocalDateTime.now(), "dd-MM-yyyy HH.mm.ss");
 
             File relatorioTxt = new File(arquivo, "relatorio " + dataFormatada + ".txt");
             relatorioTxt.createNewFile();
@@ -97,8 +96,13 @@ public class VacinaService {
         sb.append(String.format("%s Relatorio de aplicação da vacina %s", "=".repeat(30), "=".repeat(30)));
 
         for (Vacina vac : vacs) {
-            sb.append(String.format("\n| Nome: %s\n| CPF: %s\n| Nasc: %s\n| CPF: %s\n| Telefone: %s\n| Vacina: %s\n| Data aplicação: %s\n|", vac.getUsuario().getNomeUsuario(), vac.getUsuario().getCpf(), vac.getUsuario().getDataNascimento(), vac.getUsuario().getCpf(),
-                    vac.getUsuario().getTelefone(), vac.getNomeVacina(), vac.getDataAplicacao()));
+            sb.append(String.format("\n| Nome: %s\n| CPF: %s\n| Nasc: %s\n| Telefone: %s\n| Vacina: %s\n| Data aplicação: %s\n|",
+                    vac.getUsuario().getNomeUsuario(),
+                    FactoryFormat.formataCpf(vac.getUsuario().getCpf()),
+                    FactoryFormat.formataData(vac.getUsuario().getDataNascimento()),
+                    FactoryFormat.formataTelefone(vac.getUsuario().getTelefone()),
+                    vac.getNomeVacina(),
+                    FactoryFormat.formataData(vac.getDataAplicacao())));
             sb.append(String.format("%s", "=".repeat(93)));
         }
         return sb.toString();
