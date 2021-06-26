@@ -1,9 +1,9 @@
 # :syringe: Vacinação :syringe:
 
 ### :page_with_curl: Explicando :page_with_curl:
-Fiz essa pequena aplicação para exercitar os conceitos dados em aula.
-Nessa semana foi proposto que fizessemos um crud com JDBC.
-Então preferi criar um projeto diferente. Essa aplicação 
+Fiz essa pequena aplicação para exercitar os conceitos aplicados em aula.
+Nessa semana foi proposto que fizessemos um CRUD com JDBC.
+Então preferi criar um projeto diferente. Esse programa 
 faz o registro da aplicação de vacina em pessoas que já possuem 
 um cadastro.
 
@@ -107,6 +107,8 @@ Nesse menu é possível fazer as seguintes operações:
 * Gerar relatorio das aplicações de vacina, também é possivel salvar o relatorio
 
 Por enquanto para poder salvar o relatorio será necessário alterar o path do arquivo em *service/VacinaService*
+É preciso colocar o caminho absoluto até a pasta relatorios.
+Ex:
 ```
-final String path = "CAMINHO DE ONDE O PROJETO FOI BAIXADO ATÉ A PASTA RELATORIOS \relatorios";
+final String path = "C:\Users\seuUsuario\Desktop\mjv\DevSchool-MJV\maven-project\relatorios";
 ```
