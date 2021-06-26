@@ -3,20 +3,19 @@ package service;
 import dao.VacinaDAO;
 import model.Vacina;
 
-import javax.naming.spi.DirObjectFactory;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.List;
 import java.util.Scanner;
 
 public class VacinaService {
+
+    final String PATH = "C:\\Users\\renna\\Desktop\\ws-devschool\\dev-school-curso-java\\maven-project\\relatorios";
 
     VacinaDAO dao = new VacinaDAO();
 
@@ -64,7 +63,7 @@ public class VacinaService {
     }
 
     private void salvaRelatorio(String relatorio) {
-        File arquivo = new File("C:\\Users\\renna\\Desktop\\ws-devschool\\dev-school-curso-java\\maven-project\\relatorios");
+        File arquivo = new File(PATH);
         if (!arquivo.exists()) {
             arquivo.mkdirs();
         }
