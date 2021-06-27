@@ -209,7 +209,7 @@ public class Main {
     }
 
     private static void gerarRelatorio() {
-        vs.getAllAplicacoes();
+        vs.findAllAplicacoes();
     }
 
     private static void aplicarVacina() {

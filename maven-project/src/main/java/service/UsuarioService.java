@@ -16,7 +16,7 @@ public class UsuarioService {
     public void saveUsuario(Usuario user) {
         try {
             if (bo.validateCpf(user.getCpf())) {
-                if (bo.valdiateEmail(user.getEmail())) {
+                if (bo.validateEmail(user.getEmail())) {
                     if (dao.saveUsuario(user) == 1) {
                         String resposta = String.format("Usuario inserido com sucesso:\nNome: %s\nCPF: %s\nEmail: %s\nData de nascimento: %s\nTel: %s",
                                 user.getNomeUsuario(), FactoryFormat.formataCpf(user.getCpf()), user.getEmail(), 

@@ -12,13 +12,14 @@ import java.util.List;
 public class VacinaDAO {
 
     private Connection connection;
+    private String sql = null;
 
     public VacinaDAO() {
         this.connection = FactoryConnector.getConnection();
     }
 
     public int saveVacina(Vacina vac) throws SQLException {
-        String sql = "INSERT INTO tb_vacina (nome_vacina, data_aplicacao, id_usuario) VALUES (?,?,?);";
+        sql = "INSERT INTO tb_vacina (nome_vacina, data_aplicacao, id_usuario) VALUES (?,?,?);";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         pstmt.setString(1, vac.getNomeVacina());
         pstmt.setDate(2, Date.valueOf(vac.getDataAplicacao()));
@@ -28,7 +29,7 @@ public class VacinaDAO {
     }
 
     public int updateVacina(Vacina vac) throws SQLException {
-        String sql = "UPDATE tb_vacina SET nome_vacina=?, data_aplicacao=? WHERE id=?;";
+        sql = "UPDATE tb_vacina SET nome_vacina=?, data_aplicacao=? WHERE id=?;";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         pstmt.setString(1, vac.getNomeVacina());
         pstmt.setDate(2, Date.valueOf(vac.getDataAplicacao()));
@@ -37,8 +38,8 @@ public class VacinaDAO {
         return pstmt.executeUpdate();
     }
 
-    public List<Vacina> getAllAplicacoes() throws SQLException {
-        String sql = "SELECT * FROM tb_vacina inner join tb_usuario on (tb_vacina.id_usuario = tb_usuario.id);";
+    public List<Vacina> findAllAplicacoes() throws SQLException {
+        sql = "SELECT * FROM tb_vacina inner join tb_usuario on (tb_vacina.id_usuario = tb_usuario.id);";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         ResultSet rs = pstmt.executeQuery();
 
@@ -67,7 +68,7 @@ public class VacinaDAO {
     }
 
     public int deleteVacina(Integer id) throws SQLException {
-        String sql = "DELETE FROM tb_vacina WHERE id_vacina=?";
+        sql = "DELETE FROM tb_vacina WHERE id_vacina=?";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         pstmt.setInt(1, id);
         return pstmt.executeUpdate();

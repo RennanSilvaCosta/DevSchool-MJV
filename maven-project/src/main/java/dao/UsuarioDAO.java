@@ -11,13 +11,14 @@ import java.util.List;
 public class UsuarioDAO {
 
     private Connection connection;
+    private String sql = null;
 
     public UsuarioDAO() {
         this.connection = FactoryConnector.getConnection();
     }
 
     public int saveUsuario(Usuario user) throws SQLException {
-        String sql = "INSERT INTO tb_usuario (nome_usuario,email,cpf,data_nascimento,telefone) VALUES (?,?,?,?,?);";
+        sql = "INSERT INTO tb_usuario (nome_usuario,email,cpf,data_nascimento,telefone) VALUES (?,?,?,?,?);";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         pstmt.setString(1, user.getNomeUsuario());
         pstmt.setString(2, user.getEmail());
@@ -29,7 +30,7 @@ public class UsuarioDAO {
     }
 
     public int updateUsuario(Usuario user) throws SQLException {
-        String sql = "UPDATE tb_usuario SET nome_usuario=?, email=?, cpf=?, data_nascimento=?, telefone=? WHERE id=?;";
+        sql = "UPDATE tb_usuario SET nome_usuario=?, email=?, cpf=?, data_nascimento=?, telefone=? WHERE id=?;";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         pstmt.setString(1, user.getNomeUsuario());
         pstmt.setString(2, user.getEmail());
@@ -42,7 +43,7 @@ public class UsuarioDAO {
     }
 
     public List<Usuario> getAll() throws SQLException {
-        String sql = "SELECT * FROM tb_usuario;";
+        sql = "SELECT * FROM tb_usuario;";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         ResultSet rs = pstmt.executeQuery();
 
@@ -63,14 +64,14 @@ public class UsuarioDAO {
     }
 
     public int deleteUsuario(Integer id) throws SQLException {
-        String sql = "DELETE FROM tb_usuario WHERE id=?";
+        sql = "DELETE FROM tb_usuario WHERE id=?";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         pstmt.setInt(1, id);
         return pstmt.executeUpdate();
     }
 
     public Usuario getByEmail(String email) throws SQLException {
-        String sql = "SELECT * FROM tb_usuario WHERE email=?;";
+        sql = "SELECT * FROM tb_usuario WHERE email=?;";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         pstmt.setString(1, email);
         ResultSet rs = pstmt.executeQuery();
@@ -90,7 +91,7 @@ public class UsuarioDAO {
     }
 
     public Usuario getByCpf(String cpf) throws SQLException {
-        String sql = "SELECT * FROM tb_usuario WHERE cpf=?;";
+        sql = "SELECT * FROM tb_usuario WHERE cpf=?;";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         pstmt.setString(1, cpf);
         ResultSet rs = pstmt.executeQuery();

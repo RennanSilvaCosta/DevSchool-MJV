@@ -22,9 +22,8 @@ public class VacinaService {
     public void saveVacina(Vacina vac) {
         try {
             if (dao.saveVacina(vac) == 1) {
-                String resposta = String.format("\nVacina aplicada com sucesso:\nNome: %s\nAplicado em: %s\nData de aplicação: %s",
+                System.out.printf("\nVacina aplicada com sucesso:\nNome: %s\nAplicado em: %s\nData de aplicação: %s%n",
                         vac.getNomeVacina(), vac.getUsuario().getNomeUsuario(), FactoryFormat.formataData(vac.getDataAplicacao()));
-                System.out.println(resposta);
             }
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
@@ -40,19 +39,19 @@ public class VacinaService {
         }
     }
 
-    public void getAllAplicacoes() {
+    public void findAllAplicacoes() {
         Scanner sc = new Scanner(System.in);
         try {
-            List<Vacina> vacs = dao.getAllAplicacoes();
+            List<Vacina> vacs = dao.findAllAplicacoes();
             if (vacs.size() > 0) {
-                String relatorio = geraRelatorio(vacs);
+                String relatorio = createRelatorio(vacs);
                 System.out.println(relatorio);
                 System.out.println("Deseja salvar este relatorio: (S)im ou (N)ão");
 
                 char resposta = sc.next().toLowerCase().charAt(0);
 
                 if (resposta == 's') {
-                    salvaRelatorio(relatorio);
+                    saveRelatorio(relatorio);
                 }
             } else {
                 System.out.println("Impossivel gerar relátorio, pois não foi aplicada nenhuma vacina!");
@@ -62,7 +61,7 @@ public class VacinaService {
         }
     }
 
-    private void salvaRelatorio(String relatorio) {
+    private void saveRelatorio(String relatorio) {
         File arquivo = new File(PATH);
         if (!arquivo.exists()) {
             arquivo.mkdirs();
@@ -91,7 +90,7 @@ public class VacinaService {
         }
     }
 
-    private String geraRelatorio(List<Vacina> vacs) {
+    private String createRelatorio(List<Vacina> vacs) {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("%s Relatorio de aplicação da vacina %s", "=".repeat(30), "=".repeat(30)));
 
