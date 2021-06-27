@@ -112,3 +112,10 @@ Ex:
 ```
 final String path = "C:\Users\seuUsuario\Desktop\mjv\DevSchool-MJV\maven-project\relatorios";
 ```
+Também será necessário alterar as configurações do banco de dados, como *usuario* e *senha*
+```
+String user = "seu usuario do banco de dados";
+String password = "sua senha do banco de dados";
+```
+
+Você pode definir isso em connectordb/FactoryConnector
