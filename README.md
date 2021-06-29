@@ -3,7 +3,7 @@
 
 ### Projetos:
 
-* [Cumpom](https://github.com/RennanSilvaCosta/DevSchool-MJV/tree/main/aula2)
+* [Cupom](https://github.com/RennanSilvaCosta/DevSchool-MJV/tree/main/aula2)
 
 A proposta desse projeto era praticar conceitos dados em aula como: manipulação de Strings, diversas funções de String como: appends, split, concat, join, repeat.
 Então como objetivo foi definido a impressão de um cupom de pedido e o armazenamento dele em disco.
