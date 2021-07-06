@@ -15,3 +15,8 @@ A proposta desse projeto era praticar conceitos dados em aula, como: JDBC, model
 * [Cadastro de aluno com JPA](https://github.com/RennanSilvaCosta/DevSchool-MJV/tree/main/project-maven-jpa)
 
 Com esse projeto vou praticar conceitos dados em aula, como: JPA, Pesistence, anotações para mapeamento de entidades (@Entity, @Id, @Table, @Column, @GeneretedValue).
+
+
+* [Projeto Vacinação API](https://github.com/RennanSilvaCosta/DevSchool-MJV/tree/main/spring-vacina-api)
+
+Nesse projeto trouxe novamente o cenario da vacinação, queria exercitar os conceitos dados em aula em relação ao Sring Boot, consumo de API e etc.
