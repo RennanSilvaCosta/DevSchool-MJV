@@ -7,7 +7,9 @@ import mjv.vacina.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -38,8 +40,13 @@ public class UserService {
     private void thisCpfExist(String cpf) {
         Optional<User> user = Optional.ofNullable(userRepository.findByCpf(cpf));
         if (user.isPresent()) {
-            //TODO: lancar exceção caso o email exista, pois o email deve ser unico.
+            //TODO: lancar exceção caso o CPF exista, pois o CPF deve ser unico.
             System.out.println("CPF já existe");
         }
+    }
+
+    public Object findAllUser() {
+        List<User> lista = userRepository.findAll();
+        return lista.stream().map(user -> new UserDTO(user)).collect(Collectors.toList());
     }
 }

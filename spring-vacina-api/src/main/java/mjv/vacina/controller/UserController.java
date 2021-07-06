@@ -28,4 +28,9 @@ public class UserController {
     public ResponseEntity<?> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(userService.findUserById(id));
     }
+
+    @GetMapping()
+    public ResponseEntity<?> findAllUser() {
+        return ResponseEntity.ok().body(userService.findAllUser());
+    }
 }
