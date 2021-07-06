@@ -3,6 +3,7 @@ package mjv.vacina.service;
 
 import mjv.vacina.dto.UserDTO;
 import mjv.vacina.dto.VacinaDTO;
+import mjv.vacina.dto.VacinaInsertDTO;
 import mjv.vacina.entitys.User;
 import mjv.vacina.entitys.Vacina;
 import mjv.vacina.repository.UserRepository;
@@ -23,13 +24,12 @@ public class VacinaService {
     @Autowired
     private UserRepository userRepository;
 
-    public VacinaDTO createNewVacina(VacinaDTO vacina) {
-        if (validateUser(vacina)) {
-            Vacina vac = new Vacina(vacina);
-            return new VacinaDTO(vacinaRepository.save(vac));
-        }
-        //TODO: lançar execeção caso o email não exista
-        return vacina;
+    public VacinaDTO createNewVacina(VacinaInsertDTO vacinaInsertDTO) {
+        VacinaDTO vacinaDTO = validateUser(vacinaInsertDTO);
+        vacinaDTO.setNomeVacina(vacinaInsertDTO.getNomeVacina());
+        vacinaDTO.setDataAplicacao(vacinaInsertDTO.getDataAplicacao());
+        Vacina vacina = new Vacina(vacinaDTO);
+        return new VacinaDTO(vacinaRepository.save(vacina));
     }
 
     public Vacina findApplicationById(Long id) {
@@ -37,9 +37,18 @@ public class VacinaService {
         return vac.get();
     }
 
-    private boolean validateUser(VacinaDTO vacina) {
-        User u = userRepository.findByEmail(vacina.getUserDTO().getEmail());
-        return u != null;
+    private VacinaDTO validateUser(VacinaInsertDTO vacina) {
+        Optional<User> user = userRepository.findById(vacina.getIdUser());
+        if (user.isPresent()) {
+            VacinaDTO vac = new VacinaDTO();
+            UserDTO u = new UserDTO(user.get());
+            vac.setUserDTO(u);
+            return vac;
+        } else {
+            //TODO: lançar exceção, pois o usuario não foi encontrado
+            System.out.println("Usuario não existe");
+            return null;
+        }
     }
 
     public List<VacinaDTO> findAllAplication() {

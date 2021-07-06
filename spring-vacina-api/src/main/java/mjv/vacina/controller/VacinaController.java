@@ -1,6 +1,7 @@
 package mjv.vacina.controller;
 
 import mjv.vacina.dto.VacinaDTO;
+import mjv.vacina.dto.VacinaInsertDTO;
 import mjv.vacina.service.VacinaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class VacinaController {
     private VacinaService vacinaService;
 
     @PostMapping
-    public ResponseEntity<?> saveVacina(@Valid @RequestBody VacinaDTO vacina) {
+    public ResponseEntity<?> saveVacina(@Valid @RequestBody VacinaInsertDTO vacina) {
         VacinaDTO vac = vacinaService.createNewVacina(vacina);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(vac.getId()).toUri();
         return ResponseEntity.created(uri).body(vac);
